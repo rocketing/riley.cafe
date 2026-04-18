@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>riley.cafe/atla</title>
+  <style>
+    :root { color-scheme: dark; }
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      background: #0f0f12;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .video-wrap {
+      width: min(90vw, 960px);
+      background: #18181d;
+      border: 1px solid #2a2a33;
+      border-radius: 18px;
+      padding: 24px;
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
+    }
+
+    video {
+      display: block;
+      width: 100%;
+      max-height: 80vh;
+      border-radius: 12px;
+      background: #000;
+    }
+
+    .note {
+      margin-top: 12px;
+      color: #b9bcc7;
+      font-size: 14px;
+      text-align: center;
+    }
+
+    code {
+      color: #ffffff;
+      background: #23232b;
+      padding: 2px 6px;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+  <div class="video-wrap">
+    <video controls preload="metadata">
+      <source src="https://www.dropbox.com/scl/fi/b2kn7o9u4p1ygf7d17zbo/ATLA-Movie.mp4?rlkey=oeqs9xu7kkbfp74vfwjwijq7w&raw=1" type="video/mp4" />
+    </video>
+  </div>
+</body>
+</html>
