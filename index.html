@@ -6,56 +6,128 @@
 <title>riley</title>
 <style>
   body {
-    margin:0;
-    height:100vh;
-    background:#000;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    overflow:hidden;
-    font-family:Arial, sans-serif;
-    color:#fff;
+    margin: 0;
+    height: 100vh;
+    background: radial-gradient(circle at center, #050505, #000);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    color: #fff;
   }
 
   .star {
-    position:absolute;
-    background:#fff;
-    border-radius:50%;
-    opacity:0.8;
-    animation: twinkle 2s infinite ease-in-out;
+    position: absolute;
+    background: #fff;
+    border-radius: 50%;
+    opacity: 0.8;
+    animation:
+      twinkle 2s infinite ease-in-out,
+      float 6s infinite alternate ease-in-out;
   }
 
   @keyframes twinkle {
-    0%,100% { opacity:0.3; transform:scale(0.8); }
-    50% { opacity:1; transform:scale(1.2); }
+    0%, 100% { opacity: 0.3; transform: scale(0.8); }
+    50% { opacity: 1; transform: scale(1.2); }
   }
 
-  .pfp {
-    width:110px;
-    height:110px;
-    border-radius:50%;
-    border:2px solid rgba(255,255,255,0.2);
-    margin-bottom:16px;
+  @keyframes float {
+    from { transform: translateY(0); }
+    to { transform: translateY(-20px); }
   }
 
   .wrap {
-    text-align:center;
-    z-index:1;
+    text-align: center;
+    z-index: 1;
+    position: relative;
+  }
+
+  .pfp-wrap {
+    position: relative;
+    width: 110px;
+    height: 110px;
+    margin: 0 auto 16px;
+  }
+
+  .banner {
+    position: absolute;
+    top: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 320px;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 14px;
+    z-index: 0;
+    opacity: 0.9;
+    filter: blur(0.4px);
+    transition: transform 0.4s ease, opacity 0.4s ease, filter 0.4s ease;
+  }
+
+  .banner:hover {
+    transform: translateX(-50%) scale(1.05) translateY(-4px);
+    opacity: 1;
+    filter: blur(0px) brightness(1.1);
+  }
+
+  .pfp {
+    position: relative;
+    z-index: 1;
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    border: 2px solid rgba(255,255,255,0.2);
+    display: block;
+    transition: transform 0.3s ease;
+  }
+
+  .pfp:hover {
+    transform: scale(1.08);
+  }
+
+  @keyframes glow {
+    0%, 100% {
+      text-shadow:
+        0 0 8px #fff,
+        0 0 20px rgba(255,255,255,0.6),
+        0 0 30px rgba(255,255,255,0.3);
+    }
+    50% {
+      text-shadow:
+        0 0 12px #fff,
+        0 0 30px rgba(255,255,255,0.9),
+        0 0 40px rgba(255,255,255,0.4);
+    }
   }
 
   .name {
-    font-size:1.8rem;
-    text-shadow:
-      0 0 8px #fff,
-      0 0 20px rgba(255,255,255,0.6),
-      0 0 30px rgba(255,255,255,0.3);
+    font-size: 1.8rem;
+    margin-top: 30px;
+    animation: glow 1s infinite ease-in-out;
+  }
+
+  a {
+    display: inline-block;
   }
 </style>
 </head>
 <body>
 
 <div class="wrap">
-  <img class="pfp" src="https://avatars.githubusercontent.com/u/212234964?v=4">
+  <div class="pfp-wrap">
+    
+    <!-- Banner link -->
+    <a href="https://open.spotify.com/user/31kcl3foiantv5wvv4cryp2k5pbi?si=10c02c0416ab4940" target="_blank">
+      <img class="banner" src="banner.gif" alt="">
+    </a>
+
+    <!-- PFP link -->
+    <a href="https://discord.com/users/1142433636822548601" target="_blank">
+      <img class="pfp" src="https://avatars.githubusercontent.com/u/212234964?v=4" alt="Profile picture">
+    </a>
+
+  </div>
   <div class="name">riley</div>
 </div>
 
@@ -74,6 +146,7 @@
     star.style.left = Math.random() * 100 + "%";
 
     star.style.animationDelay = Math.random() * 2 + "s";
+    star.style.animationDuration = `${Math.random() * 2 + 2}s, ${Math.random() * 4 + 4}s`;
 
     document.body.appendChild(star);
   }
